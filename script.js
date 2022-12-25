@@ -1,5 +1,18 @@
-// create form elements using dom -> after submitting the form it should call the table
+// comparing two objects with same data with diff order
+let obj1={name:"person1",age:5};
+let obj2={age:5,name:"person1"};
+for(const key in obj1){
+    if(obj1[key]!=obj2[key]){
+        console.log("objects are not same");
+    }
+    else{
+        continue;
+    }
+}
+console.log("objects are same");
 
+
+// api call to restapi and printing the flags and other country details
 async function getCountry(){
     try{
         const result = await fetch("https://restcountries.com/v3.1/all")    
@@ -42,7 +55,10 @@ async function getCountry(){
             cardTitle.innerHTML=element.name.common;
 
             let cardText=document.createElement('p');
-            cardText.innerHTML=element.capital + " - " + element.region + " - " + element.timezones;
+            cardText.innerHTML="Country:"+element.name.common + " region: " + element.region + " subregion: " + element.subregion+" Population: "+ element.population;
+
+            // printing country name, region, subregion, population in console
+            console.log("Country:"+element.name.common + ", region: " + element.region + ", subregion: " + element.subregion+", Population: "+ element.population);
 
             cardbody.append(cardText,cardTitle);
             card.append(cardbody,cardImg);
@@ -57,12 +73,3 @@ async function getCountry(){
 }
 
 getCountry();
-
-
-
-
-
-
-
-
-// create table using dom
